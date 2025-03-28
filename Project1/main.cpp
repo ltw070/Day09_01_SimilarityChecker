@@ -1,5 +1,14 @@
 #include"gmock/gmock.h"
-#include "split_and_sum.cpp"
+#include "SimilarityChecker.cpp"
+
+TEST(SimilarityChecker, length) {
+	SimilarityChecker app;
+	EXPECT_EQ(60, app.getScore("AAA", "AAA"));
+	EXPECT_EQ(60, app.getScore("ASD", "DSA"));
+	EXPECT_EQ((int)(60 - (60 * (5 - 3) / 3)), app.getScore("AAABB", "BAA"));
+	EXPECT_EQ(30, app.getScore("AA", "AAE"));
+	EXPECT_EQ(60, app.getScore("AAA", "AAA"));
+}
 
 int main() {
 	testing::InitGoogleMock();
