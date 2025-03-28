@@ -4,6 +4,6 @@
 class SimilarityChecker {
 public:
 	int getScore(std::string s1, std::string s2) {
-		return 100;
+		if(s1.length()==s2.length()) return 60;
 	}
 };
