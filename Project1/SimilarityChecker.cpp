@@ -19,9 +19,9 @@ public:
 
 private:
 	int calcLengthScore(int len1, int len2) {
-		if (len1 < len2) std::swap(len1, len2);
 		if (len1 == len2) return 60;
-		return 60 * (1 - (len1 - len2) / len2);
+		if (len1 <  len2) std::swap(len1, len2);
+		return (60 - 60 * (len1 - len2) / len2);
 	}
 
 	int countUniqueAlphabets(const std::string& str) {
@@ -29,37 +29,37 @@ private:
 
 		for (char c : str) {
 			if (std::isalpha(c)) {
-				// ´ë¼Ò¹®ÀÚ ±¸ºÐ ¾øÀÌ ¾ËÆÄºªÀ» Ãß°¡ (¼Ò¹®ÀÚ·Î º¯È¯)
+				// ï¿½ï¿½Ò¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Äºï¿½ï¿½ï¿½ ï¿½ß°ï¿½ (ï¿½Ò¹ï¿½ï¿½Ú·ï¿½ ï¿½ï¿½È¯)
 				uniqueAlphabets.insert(std::tolower(c));
 			}
 		}
 
-		return uniqueAlphabets.size();  // °íÀ¯ÇÑ ¾ËÆÄºªÀÇ °³¼ö ¹ÝÈ¯
+		return uniqueAlphabets.size();  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Äºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
 	}
 
     int countCommonAlphabets(const std::string& str1, const std::string& str2) {
         std::set<char> alphabets1;
         std::set<char> alphabets2;
 
-        // Ã¹ ¹øÂ° ¹®ÀÚ¿­¿¡¼­ ¾ËÆÄºª ÃßÃâ
+        // Ã¹ ï¿½ï¿½Â° ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Äºï¿½ ï¿½ï¿½ï¿½ï¿½
         for (char c : str1) {
             if (std::isalpha(c)) {
-                alphabets1.insert(std::tolower(c));  // ¼Ò¹®ÀÚ·Î º¯È¯ÇÏ¿© »ðÀÔ
+                alphabets1.insert(std::tolower(c));  // ï¿½Ò¹ï¿½ï¿½Ú·ï¿½ ï¿½ï¿½È¯ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½
             }
         }
 
-        // µÎ ¹øÂ° ¹®ÀÚ¿­¿¡¼­ ¾ËÆÄºª ÃßÃâ
+        // ï¿½ï¿½ ï¿½ï¿½Â° ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Äºï¿½ ï¿½ï¿½ï¿½ï¿½
         for (char c : str2) {
             if (std::isalpha(c)) {
-                alphabets2.insert(std::tolower(c));  // ¼Ò¹®ÀÚ·Î º¯È¯ÇÏ¿© »ðÀÔ
+                alphabets2.insert(std::tolower(c));  // ï¿½Ò¹ï¿½ï¿½Ú·ï¿½ ï¿½ï¿½È¯ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½
             }
         }
 
-        // µÎ set¿¡¼­ °øÅëµÈ ¾ËÆÄºª Ã£±â
+        // ï¿½ï¿½ setï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Äºï¿½ Ã£ï¿½ï¿½
         int commonCount = 0;
         for (char c : alphabets1) {
             if (alphabets2.find(c) != alphabets2.end()) {
-                commonCount++;  // °øÅëµÈ ¾ËÆÄºªÀÌ ÀÖÀ¸¸é Ä«¿îÆ®
+                commonCount++;  // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Äºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½Æ®
             }
         }
 
