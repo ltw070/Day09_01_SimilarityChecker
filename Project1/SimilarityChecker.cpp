@@ -10,8 +10,8 @@ public:
 
 	}
 	int calcLengthScore(int len1, int len2)	{
-		if (len1 > len2) std::swap(len1, len2);
 		if (len1 == len2) return 60;
-		return (1 - (len1 - len2) / len2);
+		if (len1 <  len2) std::swap(len1, len2);
+		return (60 - 60 * (len1 - len2) / len2);
 	}
 };
