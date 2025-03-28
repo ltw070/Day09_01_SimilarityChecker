@@ -3,11 +3,20 @@
 
 TEST(SimilarityChecker, length) {
 	SimilarityChecker app;
-	EXPECT_EQ(60, app.getScore("AAA", "AAA"));
-	EXPECT_EQ(60, app.getScore("ASD", "DSA"));
-	EXPECT_EQ( (int)(1-(int)((5-3)/3)) , app.getScore("AAABB", "BAA"));
-	EXPECT_EQ((int)(1 - (int)((3 - 2) / 2)), app.getScore("AA", "AAE"));
-	EXPECT_EQ(60, app.getScore("AAA", "AAA"));
+	EXPECT_EQ(60, app.getLengthScore("AAA", "AAA"));
+	EXPECT_EQ(60, app.getLengthScore("ASD", "DSA"));
+	EXPECT_EQ(0, app.getLengthScore("A", "BB"));
+	EXPECT_EQ(60 * (int)(1 - (int)((5 - 3) / 3)), app.getLengthScore("AAABB", "BAA"));
+	EXPECT_EQ(60 * (int)(1 - (int)((3 - 2) / 2)), app.getLengthScore("AA", "AAE"));
+}
+
+TEST(SimilarityChecker, alpha) {
+	SimilarityChecker app;
+	EXPECT_EQ(40, app.getAlphaScore("AAA", "AAA"));
+	EXPECT_EQ(40, app.getAlphaScore("ASD", "DSA"));
+	EXPECT_EQ(0, app.getAlphaScore("A", "BB"));
+	EXPECT_EQ(40, app.getAlphaScore("AAABB", "BAA"));
+	EXPECT_EQ(20, app.getAlphaScore("AA", "AAE"));
 }
 
 int main() {
